@@ -1,0 +1,72 @@
+<%= form_with(model: property) do |form| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+        <% property.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.number_field :size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pets_allowed %>
+    <%= form.check_box :pets_allowed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :laundry %>
+    <%= form.check_box :laundry %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parking %>
+    <%= form.check_box :parking %>
+  </div>
+
+  <div class="field">
+    <%= form.label :terms_available %>
+    <%= form.number_field :terms_available %>
+  </div>
+
+  <div class="field">
+    <%= form.label :earliest_start_date %>
+    <%= form.date_select :earliest_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :application_fee %>
+    <%= form.text_field :application_fee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monthly_rent %>
+    <%= form.text_field :monthly_rent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :occupied_by %>
+    <%= form.text_field :occupied_by %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

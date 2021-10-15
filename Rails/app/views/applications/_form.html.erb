@@ -1,0 +1,43 @@
+<%= form_with(model: application) do |form| %>
+  <% if application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+        <% application.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--%= @applicant = current_applicant %-->
+
+  <p>You are Applying the property: <%= @property.name %></p>
+  <p>Current Applicant: <%= current_applicant.name %></p>
+
+  <div class="field">
+    <%= form.hidden_field :property_id, value: @property.id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :property_name, value: @property.name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datetime %>
+    <%= form.date_select :datetime %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :applicant_name, value: current_applicant.name %>
+  </div>
+
+  <div class="field"> 
+    <%= form.hidden_field :approved_rejected_processing, value: 0 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Complete Application"%>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<h1>Leasing Agency System</h1>
+<% if current_applicant %>
+  Logged in as <%= current_applicant.name %>. <br>
+  <%= link_to 'View all properties', properties_path %><br>
+  <%= link_to 'View my applications', applications_path %><br>
+  <%= link_to "Logout", logout_path %>
+<% elsif current_agent %>
+  Logged in as <%= current_agent.name %>. <br>
+  <%= link_to 'View all properties', properties_path %><br>
+  <%= link_to 'View all applications', applications_path %><br>
+  <%= link_to "Logout", logout_path %>
+<% elsif current_admin %>
+  Logged in as <%= current_admin.name %>. <br>
+  <%= link_to 'View all properties', properties_path %><br>
+  <%= link_to 'View all leasing agents', leasing_agents_path %>
+  <%= link_to 'View all applicants', applicants_path %><br>
+  <%= link_to 'View all applications', applications_path %><br>
+  <%= link_to "Logout", logout_path %>
+<% else %>
+  <%= link_to "Applicant Signup", signup_path %> or
+  <%= link_to "Applicant Login", login_path %>   <br>
+  <%= link_to "Agent Login", agent_login_path %> <br>
+  <%= link_to "Admin Login", admin_login_path %>
+<% end %>

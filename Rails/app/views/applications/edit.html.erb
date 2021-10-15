@@ -1,0 +1,32 @@
+<h1>Checking Application</h1>
+
+<%= form_with(model: @application) do |form| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+        <% @application.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>You are checking the Property: <%= @application.property_name %></p>
+  <p>You are checking the Applicant: <%= @application.applicant_name %></p>
+  <p>This Application was created at: <%= @application.datetime %></p>
+  <p></p>
+  <p>Your choice:</p>
+  <div class="field">
+    <!--%= form.text_field :approved_rejected_processing %-->
+    <%= form.select :approved_rejected_processing, [["Approved", 1], ["Reject", 2], ["Hold", 0]] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Complete Checking"%>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @application %> |
+<%= link_to 'Back', applications_path %>

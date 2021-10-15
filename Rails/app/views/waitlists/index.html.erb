@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Waitlists</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Applicant</th>
+      <th>Datetime</th>
+      <th>Property</th>
+      <th>Approved rejected processing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @waitlists.each do |waitlist| %>
+      <tr>
+        <td><%= waitlist.applicant_id %></td>
+        <td><%= waitlist.datetime %></td>
+        <td><%= waitlist.property %></td>
+        <td><%= waitlist.approved_rejected_processing %></td>
+        <td><%= link_to 'Show', waitlist %></td>
+        <td><%= link_to 'Edit', edit_waitlist_path(waitlist) %></td>
+        <td><%= link_to 'Destroy', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Waitlist', new_waitlist_path %>
+<%= link_to 'Home Page', root_path %>

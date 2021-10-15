@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @application.datetime %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @application.property_name %>
+</p>
+
+<p>
+  <strong>Applicant:</strong>
+  <%= @application.applicant_name %>
+</p>
+
+<p>
+  <strong>Application_status:</strong>
+  <% if @application.approved_rejected_processing == 0 %>
+    processing
+  <% elsif @application.approved_rejected_processing == 1 %>
+    approved
+  <% else %>
+    rejected
+  <% end %>
+</p>
+
+<%= link_to 'Back', applications_path %>
+<%= link_to 'Home Page', root_path %>

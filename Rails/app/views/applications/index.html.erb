@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Applications</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Applicant</th>
+    <th>Datetime</th>
+    <th>Property</th>
+    <th>Application status</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @applications.each do |application| %>
+    <tr>
+      <td><%= application.applicant_name %></td>
+      <td><%= application.datetime %></td>
+      <td><%= application.property_name %></td>
+      <% if application.approved_rejected_processing == 0 %>
+        <td> processing </td>
+      <% elsif application.approved_rejected_processing == 1 %>
+        <td> approved </td>
+      <% else %>
+        <td> rejected </td>
+      <% end %>
+      <td><%= link_to 'Show', application %></td>
+      <% if current_agent||current_admin %>
+        <td><%= link_to 'Check', edit_application_path(application) %></td>
+      <% end %>
+      <td><%= link_to 'Delete', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'View all Properties', properties_path %>
+<%= link_to 'Home Page', root_path %>

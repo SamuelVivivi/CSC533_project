@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Properties</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Size</th>
+    <th>Pets allowed</th>
+    <th>Laundry</th>
+    <th>Parking</th>
+    <th>Terms available</th>
+    <th>Earliest start date</th>
+    <th>Application fee</th>
+    <th>Monthly rent</th>
+    <th>Occupied by</th>
+    <th colspan="11"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @properties.each do |property| %>
+    <tr>
+      <td><%= property.name %></td>
+      <td><%= property.address %></td>
+      <td><%= property.size %></td>
+      <% if property.pets_allowed == true %>
+        <td> Yes </td>
+      <% else %>
+        <td> No </td>
+      <% end %>
+      <% if property.laundry == true %>
+        <td> Yes </td>
+      <% else %>
+        <td> No </td>
+      <% end %>
+      <% if property.parking == true %>
+        <td> Yes </td>
+      <% else %>
+        <td> No </td>
+      <% end %>
+      <td><%= property.terms_available %></td>
+      <td><%= property.earliest_start_date %></td>
+      <td>$<%= property.application_fee %></td>
+      <td>$<%= property.monthly_rent %></td>
+      <td><%= property.occupied_by %></td>
+      <% if current_agent||current_admin %>
+        <td><%= link_to 'Show', property %></td>
+        <td><%= link_to 'Edit', edit_property_path(property) %></td>
+        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      <% if current_applicant %>
+        <td><%= link_to_if property.occupied_by = 0, 'Apply this property', new_application_path(:property_id => property.id) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_agent||current_admin %>
+<%= link_to 'New Property', new_property_path %>
+<% end %>
+
+<%= link_to 'Home Page', root_path %>

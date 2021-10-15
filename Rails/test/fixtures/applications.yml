@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  application_id: MyString
+  datetime: 2021-09-23
+  property: MyString
+  approved_rejected_processing: 1
+
+two:
+  application_id: MyString
+  datetime: 2021-09-23
+  property: MyString
+  approved_rejected_processing: 1

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Applicant:</strong>
+  <%= @waitlist.applicant_id %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @waitlist.datetime %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @waitlist.property %>
+</p>
+
+<p>
+  <strong>Approved rejected processing:</strong>
+  <%= @waitlist.approved_rejected_processing %>
+</p>
+
+<%= link_to 'Edit', edit_waitlist_path(@waitlist) %> |
+<%= link_to 'Back', waitlists_path %>

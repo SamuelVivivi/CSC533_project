@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @applicant.name %>
+</p>
+
+<p>
+  <strong>Email address:</strong>
+  <%= @applicant.email_address%>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @applicant.phone_number %>
+</p>
+
+<p>
+  <strong>Property applied:</strong>
+  <%= @applicant.property_applied %>
+</p>
+
+<p>
+  <strong>Property occupied:</strong>
+  <%= @applicant.property_occupied %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Home Page', root_path %>
