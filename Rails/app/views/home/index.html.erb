@@ -1,4 +1,4 @@
-<h1>Leasing Agency System</h1>
+<h1>Time Attack Experiment</h1>
 <% if current_applicant %>
   Logged in as <%= current_applicant.name %>. <br>
   <%= link_to 'View all properties', properties_path %><br>
@@ -17,8 +17,8 @@
   <%= link_to 'View all applications', applications_path %><br>
   <%= link_to "Logout", logout_path %>
 <% else %>
-  <%= link_to "Applicant Signup", signup_path %> or
-  <%= link_to "Applicant Login", login_path %>   <br>
-  <%= link_to "Agent Login", agent_login_path %> <br>
+  <%= link_to "User1 Signup", signup_path %> or
+  <%= link_to "User1 Login", login_path %>   <br>
+  <%= link_to "User2 Login", agent_login_path %> <br>
   <%= link_to "Admin Login", admin_login_path %>
 <% end %>
