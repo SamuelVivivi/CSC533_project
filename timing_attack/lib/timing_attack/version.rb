@@ -1,0 +1,3 @@
+module TimingAttack
+  VERSION = "0.7.1"
+end
