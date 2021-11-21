@@ -1,5 +1,3 @@
-require 'test/unit'
-
 def strings_are_equal?(str1, str2)
   _s1=str1.scan(/./)
   _s2=str2.scan(/./)
@@ -19,13 +17,12 @@ def strings_are_equal?(str1, str2)
   true
 end
 
+def secure_compare(a, b)
+  return false unless a.bytesize == b.bytesize
 
-class TestStringsAreEqual < Test::Unit::TestCase
- 
-  def test_strings_are_equal
-    assert(strings_are_equal?("aaaa", "aaaa"))
-  end
- 
+  l = a.unpack "C#{a.bytesize}"
+
+  res = 0
+  b.each_byte { |byte| res |= byte ^ l.shift }
+  res == 0
 end
-
-

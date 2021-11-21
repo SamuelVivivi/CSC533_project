@@ -33,11 +33,11 @@ trials=[]
 dist=Distribution.new
 
 #length of the token is 40
-hmac = "ef2542fe60be70722119beaec6ca770ad815a779"
+hmac = "0000000000000000000000000000000000000000"
 
-(2..2).each do |i|
+(0..0).each do |i|
   
-  number_of_times.times do |k| # try each byte 25 times to find slowest one statisticly
+  number_of_times.times do |k| # try each byte k times to find slowest one statisticly
     (0..15).each {|i|dataset["%1x" % i]=[]} #reset
     (0..15).each do |j|
       hmac[i] = byte = "%1x" % j

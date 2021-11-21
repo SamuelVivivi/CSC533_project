@@ -60,7 +60,7 @@ module USER_DB
       DB.conn[:users][:username => username]
     end
 
-
+    #Unsafe Comparison
     def strings_are_equal?(str1, str2)
       _s1=str1.scan(/./)
       _s2=str2.scan(/./)
@@ -73,13 +73,24 @@ module USER_DB
           #puts "short circuiting @ #{i}- #{str1}!=#{str2}"
           return false 
         else
-#          sleep(1/10000.0) #fake work
+          #sleep(1/10000.0) #fake work
         end
-        puts "matched at index #{i}"
+        #puts "matched at index #{i}"
       end
 
       # yay
       true
+    end
+
+    #Constant-time Comparison Algorithm
+    def secure_compare(a, b)
+      return false unless a.bytesize == b.bytesize
+    
+      l = a.unpack "C#{a.bytesize}"
+    
+      res = 0
+      b.each_byte { |byte| res |= byte ^ l.shift }
+      res == 0
     end
 
     post '/timing_attack' do
