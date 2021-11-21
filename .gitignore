@@ -1,3 +1,4 @@
 
 talks-timing-attack/Gemfile.lock
 *.lock
+hmac-timing-attacks/webapp/ruby/db.log
