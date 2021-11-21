@@ -73,9 +73,9 @@ module USER_DB
           #puts "short circuiting @ #{i}- #{str1}!=#{str2}"
           return false 
         else
-          #sleep(1/10000.0) #fake work
+          sleep(1/10000.0) #this sleep can make comparison time difference obviously
         end
-        #puts "matched at index #{i}"
+        puts "matched at index #{i}"
       end
 
       # yay
@@ -98,7 +98,7 @@ module USER_DB
       p hash_challenge = params[:hash_challenge]
       p user_hash = DB.conn[:users][:username => username][:password_hash]
 
-      if(strings_are_equal?(hash_challenge, user_hash))
+      if(secure_compare(hash_challenge, user_hash))
         "Correct Token"
       else
         "False Token"
