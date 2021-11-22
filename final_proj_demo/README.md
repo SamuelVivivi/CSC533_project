@@ -30,8 +30,9 @@ Run the server application first:
 ```
 Then run the client application:
 ```
-    ruby client.rb [first n characters are correct] [n]
+    ruby client.rb [HMAC] [n]
     example: ruby client.rb ef2542fe60be0000000000000000000000000000 12 
+    hint: If you want to get the correct result, the first n characters of HMAC should be correct
 ```
 
 The character which is most likely to be correct at current HMAC position will be printed in the first place on the **client application** screen.
@@ -58,4 +59,5 @@ References
 ------------
 
 https://www.stackednotion.com/blog/2009/09/09/timing-attacks-in-ruby/
+
 https://github.com/eggie5/hmac-timing-attacks
