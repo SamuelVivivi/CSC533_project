@@ -75,7 +75,7 @@ module USER_DB
         else
           sleep(1/10000.0) #this sleep can make comparison time difference obviously
         end
-        puts "matched at index #{i}"
+        # puts "matched at index #{i}"
       end
 
       # yay
@@ -93,12 +93,26 @@ module USER_DB
       res == 0
     end
 
+    #select a string comparison function
+    def select_cmp_func(str1, str2)
+      type = ARGV.first
+      if(secure_compare(type.to_s, "safety")) # ensure same compare time
+        secure_compare(str1, str2)
+
+      elsif(secure_compare(type.to_s, "danger")) # in order to not influence on timing attack
+        strings_are_equal?(str1, str2)
+
+      else
+        return false
+      end
+    end
+
     post '/timing_attack' do
       username = params[:username]
       p hash_challenge = params[:hash_challenge]
       p user_hash = DB.conn[:users][:username => username][:password_hash]
 
-      if(secure_compare(hash_challenge, user_hash))
+      if(select_cmp_func(hash_challenge, user_hash))
         "Correct Token"
       else
         "False Token"
@@ -135,6 +149,16 @@ end
 
 
 def main
+  type = ARGV.first
+  if(type.to_s == "safety")
+    puts "****** Server is using secure comparison algorithm! ******"
+  elsif(type.to_s == "danger")
+    puts "****** Server is vulnerable now! ******"
+  else
+    puts "****** Wrong argument! Usage: ruby server.rb [safety/danger] ******"
+    return false
+  end
+
   USER_DB::DB.init
   USER_DB::TestServer.run!
 end

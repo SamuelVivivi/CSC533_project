@@ -25,13 +25,28 @@ Usage
 
 Run the server application first:
 ```
-    ruby server.rb
+    ruby server.rb [option:safety/danger]
+    example: ruby server.rb danger
 ```
 Then run the client application:
 ```
-    ruby client.rb
+    ruby client.rb [first n characters are correct] [n]
+    example: ruby client.rb ef2542fe60be0000000000000000000000000000 12 
 ```
+
 The character which is most likely to be correct at current HMAC position will be printed in the first place on the **client application** screen.
+
+Explanation: we can brute crack the HMAC by changing the arguments from left to right. For example, at first, we use: 
+```
+    ruby client.rb 0000000000000000000000000000000000000000 0 
+```
+to crack the first bit, since we will know the first bit is 'e', then we will use:
+```
+    ruby client.rb e000000000000000000000000000000000000000 1 
+```
+to crack the second bit, the rest can be done in the same manner.
+
+
 
 How to improve 
 ------------
@@ -43,3 +58,4 @@ References
 ------------
 
 https://www.stackednotion.com/blog/2009/09/09/timing-attacks-in-ruby/
+https://github.com/eggie5/hmac-timing-attacks
