@@ -59,7 +59,16 @@ How to improve
 
 References 
 ------------
+https://bugs.ruby-lang.org/issues/10098
+
+https://github.com/ruby/openssl/pull/269
 
 https://www.stackednotion.com/blog/2009/09/09/timing-attacks-in-ruby/
 
 https://github.com/eggie5/hmac-timing-attacks
+
+https://coolshell.cn/articles/19395.html
+
+https://blog.csdn.net/qq_35246620/article/details/55806428
+
+
