@@ -91,3 +91,4 @@ p dist.sorted_avg
 #curl -v -d "username=utest&hash_challenge=ef2542fe60be70722119beaec6ca770ad815a776" http://localhost:4567/timing_attack
 
 #ruby client.rb ef2542fe60be0000000000000000000000000000 12
+#the correct result should be '7'
