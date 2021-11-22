@@ -37,7 +37,9 @@ Then run the client application:
 
 The character which is most likely to be correct at current HMAC position will be printed in the first place on the **client application** screen.
 
-Explanation: we can brute crack the HMAC by changing the arguments from left to right. For example, at first, we use: 
+Explanation: 
+
+we can brute crack the HMAC by changing the arguments from left to right. For example, at first, we use: 
 ```
     ruby client.rb 0000000000000000000000000000000000000000 0 
 ```
